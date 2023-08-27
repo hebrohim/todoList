@@ -46,13 +46,13 @@ localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   return (
     <div className=" bg-white mx-5 shadow-lg shadow-black rounded-lg -translate-y-10 md:my-0 md:mx-auto md:w-[50vw] md:-translate-y-24">
       {tasks.map((todo, index) => {
-        
+
         return (
           <section key={index}>
             <div className=" p-5 flex justify-between ">
               <input
                 type="checkbox"
-                checked  = {todo}
+               checked={!!todo.isChecked}
                 onChange={() => {
                   handleCheck(todo.task);
                 }}
