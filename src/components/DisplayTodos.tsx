@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 
 import { todoContext } from "../App";
 type todoObject = {
@@ -9,6 +9,7 @@ type todoObject = {
 
 type todoProps = {
   setTodo: React.Dispatch<React.SetStateAction<todoObject[]>>;
+  isChecked: boolean;
 };
 const DisplayTodos = ({ setTodo}: todoProps) => {
   let tasks = useContext(todoContext);

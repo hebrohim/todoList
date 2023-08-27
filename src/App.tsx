@@ -16,7 +16,7 @@ const App = () => {
   const [task, setTask] = useState<string>("");
   const [deadline, setDeadline] = useState<Number>(0);
   const [todo, setTodo] = useState<todoObject[]>([]);
-  let isChecked  = false;
+  let isChecked = false;
 
   // create a task variable to store in localStorage
   if (localStorage.getItem("tasks") === null) {
