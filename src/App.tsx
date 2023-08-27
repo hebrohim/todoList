@@ -4,9 +4,10 @@ import DisplayTodos from "./components/DisplayTodos";
 type todoObject = {
   task: string;
   deadline: Number;
+  
 };
 
-export const todoContext = createContext<todoObject[]>([]);
+export const todoContext = createContext<todoObject[] | undefined>([]);
 
 let tasks;
 const App = () => {
@@ -83,20 +84,18 @@ const App = () => {
 
   return (
     <div>
-      <todoContext.Provider value={tasks}>
-        <form className=" h-[40vh] bg-[ url(./slider2.jpg),linear-gradient(to_bottom_right,#a52a2a84,#a52a2a82)] border-b-2 border-slate-800 p-5 md:py-10 lg:py-12 flex flex-col justify-center items-center md:flex-row md:h-[40vh]">
-          <div className="p-7 mb-10 flex flex-col md:mr-10 bg-[#fffdfdc0] rounded-s-full">
+      <todoContext.Provider value={{tasks,setTodo}}>
+        <form className=" h-[40vh] bg-[ url(./slider2.jpg),linear-gradient(to_bottom_right,#a52a2a84,#a52a2a82)] border-b-2 border-slate-800 p-5 md:py-10 lg:py-12 flex flex-col justify-center items-center md:flex-row md:h-[60vh] ">
+          <div className="px-7 py-4 -mt-10 mb-10 outline-dashed outline-slate-800 flex flex-col md:mr-10 bg-[#fffdfdc0] rounded-s-full md:mt-8 md:mb-0 md:py-2">
             <h1 className="text-4xl font-medium">{day}</h1>
             <h1 className="text-sm text-center font-medium">
               {month} {date},{year}
             </h1>
-
-            
           </div>
           <input
             name="taskInput"
             value={task}
-            className="w-full px-3 py-2 border-[1px] border-slate-800 rounded-md focus:outline-none md:w-1/2"
+            className="w-full -mt-8 px-3 py-2 border-[1px] border-slate-800 rounded-md focus:outline-none md:w-1/2 md:mt-0"
             placeholder="Add task here ..."
             onChange={handleChange}
           />
