@@ -1,4 +1,4 @@
-import { useContext ,useState} from "react";
+import { useContext } from "react";
 
 import { todoContext } from "../App";
 const DisplayTodos = ({setTodo}) => {
