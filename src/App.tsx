@@ -7,7 +7,7 @@ type todoObject = {
   
 };
 
-export const todoContext = createContext<todoObject[] | undefined>([]);
+export const todoContext = createContext<todoObject[]>([]);
 
 let tasks;
 const App = () => {
@@ -84,7 +84,7 @@ const App = () => {
 
   return (
     <div>
-      <todoContext.Provider value={{tasks,setTodo}}>
+      <todoContext.Provider value={tasks}>
         <form className=" h-[40vh] bg-[ url(./slider2.jpg),linear-gradient(to_bottom_right,#a52a2a84,#a52a2a82)] border-b-2 border-slate-800 p-5 md:py-10 lg:py-12 flex flex-col justify-center items-center md:flex-row md:h-[60vh] ">
           <div className="px-7 py-4 -mt-10 mb-10 outline-dashed outline-slate-800 flex flex-col md:mr-10 bg-[#fffdfdc0] rounded-s-full md:mt-8 md:mb-0 md:py-2">
             <h1 className="text-4xl font-medium">{day}</h1>

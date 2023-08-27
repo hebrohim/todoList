@@ -2,7 +2,7 @@ import { useContext ,useState} from "react";
 
 import { todoContext } from "../App";
 const DisplayTodos = () => {
-  const {tasks,setTodo} = useContext(todoContext);
+  const tasks = useContext(todoContext);
 
 const [todos, setTodos] = useState(tasks)
 //   Delete task
