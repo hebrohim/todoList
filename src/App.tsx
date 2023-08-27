@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { createContext } from "react";
 import DisplayTodos from "./components/DisplayTodos";
+
+
 type todoObject = {
   task: string;
   deadline: Number;
-
+ isChecked:Boolean;
 };
 
 export const todoContext = createContext<todoObject[]>([]);
@@ -14,6 +16,7 @@ const App = () => {
   const [task, setTask] = useState<string>("");
   const [deadline, setDeadline] = useState<Number>(0);
   const [todo, setTodo] = useState<todoObject[]>([]);
+  let isChecked  = false;
 
   // create a task variable to store in localStorage
   if (localStorage.getItem("tasks") === null) {
@@ -26,6 +29,7 @@ const App = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     if (event.target.name === "taskInput") {
       setTask(event.target.value);
+  
     } else {
       setDeadline(Number(event.target.value));
     }
@@ -35,14 +39,14 @@ const App = () => {
 
   const addTask = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setTodo([...todo, { task: task, deadline: deadline }]);
+    setTodo([...todo, { task: task, deadline: deadline,isChecked:isChecked }]);
     // add todo to local Storage
     if (localStorage.getItem("tasks") === null) {
       tasks = todo;
     } else {
       tasks = JSON.parse(localStorage.getItem("tasks")!);
     }
-    tasks.push({ task: task, deadline: deadline });
+    tasks.push({ task: task, deadline: deadline,isChecked:isChecked });
     localStorage.setItem("tasks", JSON.stringify(tasks));
     // console.log(tasks)
 
@@ -117,7 +121,8 @@ const App = () => {
           </button>
         </form>
 
-        <DisplayTodos setTodo = {setTodo} />
+        <DisplayTodos setTodo = {setTodo} isChecked = {isChecked}/>
+      
       </todoContext.Provider>
     </div>
   );
