@@ -7,7 +7,7 @@ const DisplayTodos = () => {
 const [todos, setTodos] = useState(tasks)
 //   Delete task
 
-const deleteTask = (taskName) =>{
+const deleteTask = (taskName:string) =>{
 
 let newTodos = todos.filter((todo)=>{
 return   taskName != todo.task
