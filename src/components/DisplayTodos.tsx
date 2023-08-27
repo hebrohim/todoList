@@ -1,7 +1,17 @@
 import { useContext } from "react";
 
 import { todoContext } from "../App";
-const DisplayTodos = ({setTodo}) => {
+type todoObject = {
+    task: string;
+    deadline: Number;
+  
+  };
+
+  type todoProps = {
+    
+    setTodo:React.Dispatch<React.SetStateAction<todoObject[]>>;
+  }
+const DisplayTodos =( {setTodo}:todoProps)=> {
   let tasks = useContext(todoContext);
 
 //const [todos, setTodos] = useState(tasks)
