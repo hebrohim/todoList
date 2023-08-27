@@ -1,24 +1,29 @@
 import { useContext ,useState} from "react";
 
 import { todoContext } from "../App";
-const DisplayTodos = () => {
-  const tasks = useContext(todoContext);
+const DisplayTodos = ({setTodo}) => {
+  let tasks = useContext(todoContext);
 
-const [todos, setTodos] = useState(tasks)
+//const [todos, setTodos] = useState(tasks)
 //   Delete task
-
+let newTodos;
 const deleteTask = (taskName:string) =>{
 
-let newTodos = todos.filter((todo)=>{
+newTodos = tasks.filter((todo)=>{
 return   taskName != todo.task
 })
-// console.log(newTodos)
-setTodos(newTodos)
 localStorage.setItem("tasks",JSON.stringify(newTodos))
+ JSON.parse(localStorage.getItem("tasks")!)
+setTodo(newTodos)
+// console.log(newTodos)
+// setTodo(newTodos)
+// console.log(newTodos)
+// setTodos(newTodos)
+// localStorage.setItem("tasks",JSON.stringify(newTodos))
 }
   return (
     <div className=" bg-white mx-5 shadow-lg shadow-black rounded-lg -translate-y-10 md:my-0 md:mx-auto md:w-[50vw] md:-translate-y-24">
-      {todos.map((todo, index) => {
+      {tasks.map((todo, index) => {
         return (
           <section key={index}>
             <div className=" p-5 flex justify-between ">

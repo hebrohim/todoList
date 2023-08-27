@@ -4,7 +4,7 @@ import DisplayTodos from "./components/DisplayTodos";
 type todoObject = {
   task: string;
   deadline: Number;
-  
+
 };
 
 export const todoContext = createContext<todoObject[]>([]);
@@ -117,7 +117,7 @@ const App = () => {
           </button>
         </form>
 
-        <DisplayTodos />
+        <DisplayTodos setTodo = {setTodo} />
       </todoContext.Provider>
     </div>
   );
